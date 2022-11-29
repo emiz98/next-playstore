@@ -11,7 +11,7 @@ const AppCategory = ({ title }) => {
 
   const titleFormatted = (title) => {
     var temp = title?.split("_").join(" ");
-    var titleNew = temp?.charAt(0).toUpperCase() + temp.toLowerCase().slice(1);
+    var titleNew = temp?.charAt(0).toUpperCase() + temp?.toLowerCase().slice(1);
     return titleNew;
   };
 
