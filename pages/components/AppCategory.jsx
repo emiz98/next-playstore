@@ -10,7 +10,7 @@ const AppCategory = ({ title }) => {
   }, []);
 
   const titleFormatted = (title) => {
-    var temp = title.split("_").join(" ");
+    var temp = title?.split("_").join(" ");
     var titleNew = temp.charAt(0).toUpperCase() + temp.toLowerCase().slice(1);
     return titleNew;
   };
@@ -60,6 +60,7 @@ const AppCategory = ({ title }) => {
                 <SwiperSlide key={i}>
                   <AppCard
                     icon={icon}
+                    appId={appId}
                     title={title}
                     category={developer}
                     rating={scoreText}

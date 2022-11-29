@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/24/solid";
 
-const AppCard = ({ icon, title, category, rating, loading }) => {
+const AppCard = ({ icon, appId, title, category, rating, loading }) => {
   return (
     <div
       className={`p-2 w-max flex flex-col items-center

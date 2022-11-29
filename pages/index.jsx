@@ -45,6 +45,7 @@ const Home = ({ categories, featuredData }) => {
               ({ appId, developer, icon, scoreText, title }, i) => (
                 <AppCardFeatured
                   key={i}
+                  appId={appId}
                   icon={icon}
                   title={title}
                   category={developer}

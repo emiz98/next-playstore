@@ -71,16 +71,16 @@ const AddApp = ({ setIsModelOpen }) => {
             <input
               value={input.title}
               onChange={(e) => setInput({ ...input, title: e.target.value })}
-              className="rounded-lg px-4 py-2 outline-none"
+              className="rounded-md px-4 py-2 border-2 border-gray-400 outline-blue-500"
               type="text"
               placeholder="App name"
             />
-            <textarea
-              className="rounded-lg px-4 py-2 outline-none"
-              onChange={(e) => setInput({ ...input, subtitle: e.target.value })}
-              value={input.subtitle}
-              rows="4"
-              placeholder="About the app"
+            <input
+              value={input.title}
+              onChange={(e) => setInput({ ...input, title: e.target.value })}
+              className="rounded-md px-4 py-2 border-2 border-gray-400 outline-blue-500"
+              type="text"
+              placeholder="Package name"
             />
             <input
               ref={imageFileRef}
@@ -92,7 +92,14 @@ const AddApp = ({ setIsModelOpen }) => {
             />
           </div>
         </div>
-
+        <textarea
+          className="rounded-md px-4 py-2 outline-none mt-2 
+          border-gray-400 border-2 focus:border-blue-500 w-full"
+          onChange={(e) => setInput({ ...input, subtitle: e.target.value })}
+          value={input.subtitle}
+          rows="4"
+          placeholder="About the app"
+        />
         <div
           onClick={() => imageFileRef.current.click()}
           className="group mt-2 flex w-max cursor-pointer flex-row items-center overflow-hidden
