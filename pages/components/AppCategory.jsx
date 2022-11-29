@@ -47,7 +47,7 @@ const AppCategory = ({ title }) => {
             slidesPerView: 5,
           },
           1366: {
-            slidesPerView: 8,
+            slidesPerView: 10,
           },
         }}
       >

@@ -1,9 +1,12 @@
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/24/solid";
+import { useRouter } from "next/router";
 
 const AppCard = ({ icon, appId, title, category, rating, loading }) => {
+  const router = useRouter();
   return (
     <div
+      onClick={() => router.push(`/${appId}`)}
       className={`p-2 w-max flex flex-col items-center
      max-w-[12rem] transition-all ease-in-out rounded-lg ${
        loading ? "h-40 !w-40 bg-gray-200" : "hover:bg-gray-100 cursor-pointer"
