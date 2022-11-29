@@ -16,7 +16,9 @@ const AppCategory = ({ title }) => {
   };
 
   const getAppsByCategory = async () => {
-    await fetch(`http://localhost:3000/api/getCategoryApps?category=${title}`)
+    await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/getCategoryApps?category=${title}`
+    )
       .then((res) => res.json())
       .then((json) => setCategoryApps(json));
   };

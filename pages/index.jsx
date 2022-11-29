@@ -107,10 +107,10 @@ export default Home;
 
 export async function getServerSideProps() {
   const categories = await fetch(
-    "http://localhost:3000/api/getCategories"
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/getCategories`
   ).then((res) => res.json());
   const featuredData = await fetch(
-    "http://localhost:3000/api/getFeatured"
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/getFeatured`
   ).then((res) => res.json());
 
   return {
