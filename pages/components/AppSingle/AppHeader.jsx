@@ -8,12 +8,12 @@ const AppHeader = ({ icon, title, dev, genre, rating }) => {
         className="bg-white object-contain max-w-[10rem] rounded-[2rem]
 shadow-lg flex items-center justify-center overflow-hidden"
       >
-        <Image height={150} width={150} src={icon} alt={title} />
+        <Image height={200} width={200} src={icon} alt={title} />
       </div>
 
       <div className="">
         <div className="flex flex-col">
-          <h1 className="text-3xl font-medium">{title}</h1>
+          <h1 className="text-2xl lg:text-3xl font-medium">{title}</h1>
           <span className="font-medium mt-2 text-green-600">{dev}</span>
           <span className="text-sm text-gray-500">{genre}</span>
         </div>

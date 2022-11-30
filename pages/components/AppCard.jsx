@@ -16,7 +16,9 @@ const AppCard = ({ icon, appId, title, category, rating, loading }) => {
         className="bg-white object-contain max-w-[10rem] rounded-[2rem]
       shadow-md flex items-center justify-center overflow-hidden"
       >
-        {!loading && <Image height={150} width={150} src={icon} alt={title} />}
+        {!loading && (
+          <Image priority height={150} width={150} src={icon} alt={title} />
+        )}
       </div>
 
       {!loading ? (

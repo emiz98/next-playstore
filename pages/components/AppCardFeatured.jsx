@@ -6,7 +6,7 @@ const AppCardFeatured = ({ icon, appId, title, category, rating }) => {
   const router = useRouter();
   return (
     <div
-      onClick={() => router.push(`/${appId}`)}
+      onClick={() => router.push(`/custom/${appId}`)}
       className="hover:bg-gray-100 p-3 pr-5 flex flex-row items-center
      max-w-sm cursor-pointer transition-all ease-in-out rounded-lg gap-x-5 w-96
      md:w-72"
@@ -15,7 +15,7 @@ const AppCardFeatured = ({ icon, appId, title, category, rating }) => {
         className="bg-white rounded-2xl relative max-w-[5rem] object-contain
       shadow-md flex items-center justify-center overflow-hidden"
       >
-        <Image height={150} width={150} src={icon} alt={title} />
+        <Image priority height={150} width={150} src={icon} alt={title} />
       </div>
 
       <div className="text-gray-700 mt-2">

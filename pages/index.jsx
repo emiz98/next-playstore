@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import AppCategory from "./components/AppCategory";
 import AppCardFeatured from "./components/AppCardFeatured";
 import AddApp from "./components/AddApp";
+import { sanityClient, urlFor } from "../sanity";
 
 // Import Swiper styles
 import "swiper/css";
@@ -21,7 +22,6 @@ const Home = ({ categories, featuredData }) => {
     if (sliceNum < categories.data.length) setSliceNum(sliceNum + 2);
     setIsLoadingMore(false);
   };
-
   return (
     <div
       className={`scrollbar-hide noSelect ${
@@ -36,20 +36,20 @@ const Home = ({ categories, featuredData }) => {
       <Header setIsModelOpen={setIsModelOpen} />
       <main className="px-8 space-y-10 mt-10 select-none">
         <div>
-          <h2 className="font-medium text-xl text-gray-600">Featured Apps</h2>
+          <h2 className="font-medium text-xl text-gray-600">My Apps</h2>
           <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
           xl:grid-cols-4 2xl:grid-cols-5 mt-5"
           >
-            {featuredData.data.map(
-              ({ appId, developer, icon, scoreText, title }, i) => (
+            {featuredData.map(
+              ({ packageName, dev, icon, rating, title }, i) => (
                 <AppCardFeatured
                   key={i}
-                  appId={appId}
-                  icon={icon}
+                  appId={packageName.current}
+                  icon={urlFor(icon).url()}
                   title={title}
-                  category={developer}
-                  rating={scoreText}
+                  category={dev}
+                  rating={rating}
                 />
               )
             )}
@@ -109,9 +109,19 @@ export async function getServerSideProps() {
   const categories = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/getCategories`
   ).then((res) => res.json());
-  const featuredData = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/getFeatured`
-  ).then((res) => res.json());
+  // const featuredData = await fetch(
+  //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/getFeatured`
+  // ).then((res) => res.json());
+
+  const query = `*[_type == "app"]{
+    title,
+    dev,
+    packageName,
+    rating,
+    icon,
+    }`;
+
+  const featuredData = await sanityClient.fetch(query);
 
   return {
     props: {

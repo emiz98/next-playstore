@@ -1,9 +1,10 @@
 import Head from "next/head";
-import Header from "./components/Header";
-import AppHeader from "./components/AppSingle/AppHeader";
-import AppCard from "./components/AppCard";
-import AppCardFeatured from "./components/AppCardFeatured";
+import Header from "../components/Header";
+import AppHeader from "../components/AppSingle/AppHeader";
+import AppCard from "../components/AppCard";
+import AppCardFeatured from "../components/AppCardFeatured";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { sanityClient, urlFor } from "../../sanity";
 
 // Import Swiper styles
 import "swiper/css";
@@ -14,7 +15,7 @@ import { ArrowRightIcon, ShareIcon } from "@heroicons/react/24/outline";
 
 const AppId = ({ appData, similarApps }) => {
   return (
-    <div className={`scrollbar-hide noSelect`}>
+    <div className={`noSelect`}>
       <Head>
         <title>Google Play</title>
         <link rel="icon" href="/favicon.ico" />
@@ -24,11 +25,11 @@ const AppId = ({ appData, similarApps }) => {
       <main className="px-10 2xl:px-80 space-y-10 mt-10 select-none 2xl:grid grid-cols-12 gap-x-20">
         <div className="col-span-8 2xl:col-span-9">
           <AppHeader
-            icon={appData.data.icon}
-            title={appData.data.title}
-            dev={appData.data.developerId}
-            genre={appData.data.genre}
-            rating={appData.data.scoreText}
+            icon={urlFor(appData[0].icon).url()}
+            title={appData[0].title}
+            dev={appData[0].dev}
+            genre={appData[0].genre}
+            rating={appData[0].rating}
           />
           <div className="flex items-center gap-x-2 mt-10">
             <button
@@ -56,13 +57,13 @@ const AppId = ({ appData, similarApps }) => {
               </div>
             </div>
             <p className="line-clamp-2 text-gray-500">
-              {appData.data.description}
+              {appData[0].description}
             </p>
           </div>
 
           <div className="text-gray-600 mt-5">
             <h2 className="font-medium">Created on</h2>
-            <span className="text-sm">{appData.data.released}</span>
+            <span className="text-sm">{appData[0].publishedAt}</span>
           </div>
         </div>
 
@@ -134,14 +135,25 @@ const AppId = ({ appData, similarApps }) => {
 export default AppId;
 
 export async function getServerSideProps(context) {
-  const appData = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/getApp?appId=${context.params.appId}`
-  ).then((res) => res.json());
+  const query = `*[_type == "app" && packageName.current==$appSlug]{
+    title,
+    dev,
+    packageName,
+    description,
+    rating,
+    icon,
+    apk,
+    "categories":categories[]->,
+    publishedAt
+    }`;
+
+  const appData = await sanityClient.fetch(query, {
+    appSlug: context.params.appId,
+  });
 
   const similarApps = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/getSimilarApps/?appId=${context.params.appId}`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/getSimilarApps2?category=${appData[0].categories[0].title}`
   ).then((res) => res.json());
-
   return {
     props: {
       appData,
