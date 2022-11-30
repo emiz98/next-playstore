@@ -6,6 +6,6 @@ export default function handler(req, res) {
   } = req;
 
   gplay
-    .similar({ appId: appId })
+    .similar({ appId: appId, num: 10 })
     .then((data) => res.status(200).json({ data: data }));
 }

@@ -11,6 +11,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 import { ArrowRightIcon, ShareIcon } from "@heroicons/react/24/outline";
+import AppGallery from "./components/AppSingle/AppGallery";
 
 const AppId = ({ appData, similarApps }) => {
   return (
@@ -63,6 +64,10 @@ const AppId = ({ appData, similarApps }) => {
           <div className="text-gray-600 mt-5">
             <h2 className="font-medium">Created on</h2>
             <span className="text-sm">{appData.data.released}</span>
+          </div>
+
+          <div>
+            <AppGallery screenshots={appData.data.screenshots} />
           </div>
         </div>
 

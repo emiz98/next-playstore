@@ -8,7 +8,7 @@ export default function handler(req, res) {
     .list({
       // category: gplay.category.MUSIC_AND_AUDIO,
       category: category,
-      num: 20,
+      num: 10,
     })
     .then((data) => res.status(200).json({ data: data }));
 

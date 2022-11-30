@@ -1,11 +1,16 @@
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode } from "swiper";
 
-const AppGallery = () => {
+const AppGallery = ({ screenshots }) => {
   return (
-    <div>
+    <div className="mt-10">
+      <h2 className="font-medium text-lg mb-5">Screenshots</h2>
       <Swiper
         slidesPerView={3}
         spaceBetween={20}
+        freeMode={true}
+        modules={[FreeMode]}
         className="mySwiper"
         breakpoints={{
           100: {
@@ -20,30 +25,20 @@ const AppGallery = () => {
           1024: {
             slidesPerView: 5,
           },
-          1366: {
-            slidesPerView: 10,
-          },
         }}
       >
-        {categoryApps.data == null
-          ? Array.from(Array(10)).map((_, i) => (
-              <SwiperSlide key={i}>
-                <AppCard loading />
-              </SwiperSlide>
-            ))
-          : categoryApps.data.map(
-              ({ appId, developer, icon, scoreText, title }, i) => (
-                <SwiperSlide key={i}>
-                  <AppCard
-                    icon={icon}
-                    appId={appId}
-                    title={title}
-                    category={developer}
-                    rating={scoreText}
-                  />
-                </SwiperSlide>
-              )
-            )}
+        {screenshots.map((_, i) => (
+          <SwiperSlide key={i}>
+            <Image
+              priority
+              height={500}
+              width={300}
+              className="rounded-xl object-cover"
+              src={screenshots[i]}
+              alt="screenshot"
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );
