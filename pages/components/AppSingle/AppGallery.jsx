@@ -27,7 +27,7 @@ const AppGallery = ({ screenshots }) => {
           },
         }}
       >
-        {screenshots.map((_, i) => (
+        {screenshots?.map((_, i) => (
           <SwiperSlide key={i}>
             <Image
               priority
