@@ -1,4 +1,4 @@
-## Whatsapp 2.0
+## Google PlayStore
 
 ![cover](cover.png)
 
@@ -13,53 +13,46 @@
 
 ## Introduction
 
-![main image](https://img.freepik.com/premium-vector/whatsapp-chatting-massage-sharing-app-ui-mockup_156779-80.jpg?w=2000)
-This is an fullstack whatsapp clone which was build for learning flutter and nodejs. The design was inspired by the original whatsapp application.
+This is an fullstack google's playstore clone which was build for hosting my own mobile application.
 
 ## Features
 
-A few of the things you can do with Whatsapp 2.0:
+Following are sone of the features:
 
-🚀 Authentication using Google login <br/>
-🚀 One-One Chat<br/>
+🚀 Original apps using [Google Scrape API](https://github.com/facundoolano/google-play-scraper) <br/>
+🚀 Custom apps using sanity backend<br/>
+🚀 Download custom apps directly<br/>
 
 ## Build Process
 
 - Clone or download the repo
 
-  #### Under Server Folder
+  #### Under Root Path
 
   - Create env file under server/.env & mongodb database using atlas/compass
 
   - Copy the credentials on the DB to .env file
 
-    `MONGODB_URI=mongodb+srv://<<user>>:<<password>>@<<db_name>>`
+    `NEXT_PUBLIC_BASE_URL:http://localhost:PORT`
+    `SANITY_API_TOKEN:<<SANITY_TOKEN>>`
+    `NEXT_PUBLIC_SANITY_DATASET:<<SANITY_DATASET>>`
+    `NEXT_PUBLIC_SANITY_ID:<<SANITY_PROJECT_ID>>`
 
-  - Connect local server to the app using your local IP and PORT parameter on .env file
+  - `yarn dev` to run the application
 
-    `PORT=####` <br/>
-    `IP_GATEWAY=###.###.#.##`
+  #### Under Sanity Backend Folder
 
-  - `yarn nodemon` to run the application
-
-  #### Under Client Folder
-
-  - `flutter pub get` to install dependencies
-  - `flutter run` to run the application
+  - `sanity init` to install sanity studio
+  - `sanity start` to start the sanity server
 
 <br/>
 
 ## Tech Stack
 
 <p float="left">
-    <img src="https://cdn.sanity.io/images/1z5g6za5/production/a093a4d518fd1e3f6d57b8a9ce4b9dc1a664c0aa-64x64.png?w=2000&fit=max&auto=format" width="60"  style="padding-right:20px"/>
-    <img src="https://cdn.sanity.io/images/1z5g6za5/production/a882e2949438a37da709d38068e03d9bc33f2fc9-64x64.png?w=2000&fit=max&auto=format" width="60"  style="padding-right:20px"/>
-    <img src="https://cdn.sanity.io/images/1z5g6za5/production/26c8efbd48f59648e141e23706ea65bb5ef9a163-24x24.svg?w=2000&fit=max&auto=format" width="60"  style="padding-right:20px"/>
-    <img src="https://cdn.sanity.io/images/1z5g6za5/production/7c6a0de4ccf01cbcd492b311e19992c2c5234887-256x256.png?w=2000&fit=max&auto=format" width="60"  style="padding-right:20px"/>
+  <img src="https://cdn.sanity.io/images/1z5g6za5/production/ea0d729f383fe9f113c7d2da95af5a39eecfa226-64x64.png?w=2000&fit=max&auto=format" width="60"  style="padding-right:20px"/>
+  <img src="https://cdn.sanity.io/images/1z5g6za5/production/469ae564e81667f04a3b2ce4ae61d1de7788064d-300x300.png?w=2000&fit=max&auto=format" width="58"  style="padding-right:20px"/> 
+  <img src="https://cdn.sanity.io/images/1z5g6za5/production/7f0e2cb4b3dc3c37829ee9ca07eab1903ec26b69-364x364.png?w=2000&fit=max&auto=format" width="60"  style="padding-right:20px"/>
+  <img src="https://cdn.sanity.io/images/1z5g6za5/production/a741467e8e9986bd58bdb7e9c6d11fba266c277b-2443x2500.svg?w=2000&fit=max&auto=format" width="55"  style="padding-right:20px"/>
+  <img src="https://cdn.sanity.io/images/1z5g6za5/production/97986d3dd7e897b83e06a41aaf9ee7a8de146685-768x768.png?w=2000&fit=max&auto=format" width="60"  style="padding-right:20px"/>
 </p>
-
-## Project Goals & Outcomes
-
-✔️ Learning Firebase Auth <br/>
-
-<!-- https://github.com/facundoolano/google-play-scraper#suggest -->

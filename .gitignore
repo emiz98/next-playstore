@@ -38,3 +38,4 @@ next-env.d.ts
 # studio
 /studio/*
 !/studio/schemas/
+.vercel

@@ -8,7 +8,7 @@ const AppCardFeatured = ({ icon, appId, title, category, rating }) => {
     <div
       onClick={() => router.push(`/custom/${appId}`)}
       className="hover:bg-gray-100 p-3 pr-5 flex flex-row items-center
-     max-w-sm cursor-pointer transition-all ease-in-out rounded-lg gap-x-5 w-96
+     max-w-sm cursor-pointer transition-all ease-in-out rounded-lg gap-x-5 w-full
      md:w-72"
     >
       <div
